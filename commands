@@ -1,0 +1,30 @@
+# URL para ver los codigos
+https://marduck2000.github.io/ilusiona-png/
+
+
+
+
+
+cd /home/mclaw/carlos/personal/ilusiona-png
+
+# 1) Borrar los PNG antiguos del repo
+git rm -f *.png
+
+# (opcional pero recomendable) actualizar el índice para que quede a 0
+./update_index.sh
+git add index.html
+
+# 2) Subir el borrado
+git commit -m "Remove old PNGs"
+git push
+
+# 3) Generar nuevos números + descargar nuevos PNG
+./ilusiona_gen_download.py
+
+# 4) Actualizar index con la nueva lista de PNG
+./update_index.sh
+
+# 5) Subir los nuevos PNG + el index actualizado
+git add *.png index.html
+git commit -m "Add new PNGs"
+git push

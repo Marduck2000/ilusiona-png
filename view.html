@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ver imagen</title>
+  <style>
+    body { margin: 0; background: #fff; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    header { position: sticky; top: 0; background:#fff; border-bottom:1px solid #eee; padding:10px 12px; }
+    a { color:#111; text-decoration:none; }
+    .wrap { padding: 14px; display:flex; justify-content:center; }
+    img { max-width: 100%; height: auto; background:#fff; }
+    .code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size: 12px; color:#444; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="./">← Volver</a>
+    <span class="code" id="code"></span>
+  </header>
+  <div class="wrap">
+    <img id="img" alt="">
+  </div>
+
+  <script>
+    const p = new URLSearchParams(location.search);
+    const file = p.get("img");
+    const img = document.getElementById("img");
+    const code = document.getElementById("code");
+
+    if (!file) {
+      code.textContent = " (sin imagen)";
+    } else {
+      img.src = file;
+      img.alt = file;
+      code.textContent = " " + file.replace(/\.png$/i,"");
+      document.title = file;
+    }
+  </script>
+</body>
+</html>
